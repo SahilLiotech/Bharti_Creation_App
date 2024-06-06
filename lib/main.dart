@@ -1,4 +1,4 @@
-import 'package:bharti_creation_app/screens/home_page.dart';
+import 'package:bharti_creation_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomePage(),
+      home: MainScreenPage(),
     );
   }
 }

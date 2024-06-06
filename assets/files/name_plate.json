@@ -1,0 +1,40 @@
+{
+  "Products": [
+    {
+      "id": 1,
+      "imagePath": "assets/images/name_plate.png",
+      "name": "Name Plate",
+      "price": 0
+    },
+    {
+      "id": 2,
+      "imagePath": "assets/images/name_plate.png",
+      "name": "Name Plate",
+      "price": 0
+    },
+    {
+      "id": 3,
+      "imagePath": "assets/images/name_plate.png",
+      "name": "Name Plate",
+      "price": 0
+    },
+    {
+      "id": 4,
+      "imagePath": "assets/images/name_plate.png",
+      "name": "Name Plate",
+      "price": 0
+    },
+    {
+      "id": 5,
+      "imagePath": "assets/images/name_plate.png",
+      "name": "Name Plate",
+      "price": 0
+    },
+    {
+      "id": 6,
+      "imagePath": "assets/images/name_plate.png",
+      "name": "Name Plate",
+      "price": 0
+    }
+  ]
+}
