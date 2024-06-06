@@ -18,14 +18,11 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               width: screenSize.width,
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Image.asset(
-                  "assets/images/home_screen_pic.png",
-                  fit: BoxFit.contain,
-                ),
+              child: Image.asset(
+                "assets/images/home_screen_pic.png",
+                fit: BoxFit.contain,
               ),
             ),
             const SizedBox(height: 10),
