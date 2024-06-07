@@ -60,6 +60,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/nameplate/
+    - assets/images/lednameplate/
+    - assets/images/dndpanels/
+    - assets/images/socitynoticeboard/
     - assets/files/
 
   # An image asset can refer to one or more resolution-specific "variants", see

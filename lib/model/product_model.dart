@@ -2,7 +2,7 @@ class Product {
   final int? id;
   final String imagePath;
   final String name;
-  final String price;
+  final int price;
 
   Product(
       {this.id,

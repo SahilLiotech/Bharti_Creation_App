@@ -1,0 +1,40 @@
+{
+  "Products": [
+    {
+      "id": 1,
+      "imagePath": "assets/images/dndpanels/brass-frame.jpg",
+      "name": "BRASS FRAME",
+      "price": 5400
+    },
+    {
+      "id": 2,
+      "imagePath": "assets/images/dndpanels/call-button.jpg",
+      "name": "CALL BUTTON",
+      "price": 2200
+    },
+    {
+      "id": 3,
+      "imagePath": "assets/images/dndpanels/corridoor-panel.jpg",
+      "name": "CORRIDOOR PANEL",
+      "price": 2200
+    },
+    {
+      "id": 4,
+      "imagePath": "assets/images/dndpanels/dnd-panel.jpg",
+      "name": "DND PANEL",
+      "price": 2200
+    },
+    {
+      "id": 5,
+      "imagePath": "assets/images/dndpanels/indicator-panel.jpg",
+      "name": "INDICATOR PANEL",
+      "price": 2200
+    },
+    {
+      "id": 6,
+      "imagePath": "assets/images/dndpanels/touch-bell.jpg",
+      "name": "TOUCH BELL",
+      "price": 2200
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "Products": [
+    {
+      "id": 1,
+      "imagePath": "assets/images/socitynoticeboard/board-esthetics.jpg",
+      "name": "BOARD ESTHETICS",
+      "price": 5400
+    },
+    {
+      "id": 2,
+      "imagePath": "assets/images/socitynoticeboard/elegant-concept.jpg",
+      "name": "ELEGANT CONCEPT",
+      "price": 2200
+    },
+    {
+      "id": 3,
+      "imagePath": "assets/images/socitynoticeboard/simpycity-in-name.jpg",
+      "name": "SIMPYCITY IN NAME",
+      "price": 2200
+    },
+    {
+      "id": 4,
+      "imagePath": "assets/images/socitynoticeboard/society-board.jpg",
+      "name": "SOCIETY BOARD",
+      "price": 2200
+    },
+    {
+      "id": 5,
+      "imagePath": "assets/images/socitynoticeboard/thick-details.jpg",
+      "name": "THICK DETAILS",
+      "price": 2200
+    },
+    {
+      "id": 6,
+      "imagePath": "assets/images/socitynoticeboard/white-orange-3d.jpg",
+      "name": "WHITE ORANGE 3D",
+      "price": 2200
+    }
+  ]
+}

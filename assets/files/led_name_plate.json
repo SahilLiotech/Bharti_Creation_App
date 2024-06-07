@@ -1,0 +1,40 @@
+{
+  "Products": [
+    {
+      "id": 1,
+      "imagePath": "assets/images/lednameplate/acrylic-in-led.jpg",
+      "name": "ACRYLIC IN LED",
+      "price": 3000
+    },
+    {
+      "id": 2,
+      "imagePath": "assets/images/lednameplate/be-fancy.jpg",
+      "name": "BE FANCY",
+      "price": 3000
+    },
+    {
+      "id": 3,
+      "imagePath": "assets/images/lednameplate/design-circle.jpg",
+      "name": "DESIGN CIRCLE",
+      "price": 3000
+    },
+    {
+      "id": 4,
+      "imagePath": "assets/images/lednameplate/simplicity.jpg",
+      "name": "SIMPLICITY",
+      "price": 3000
+    },
+    {
+      "id": 5,
+      "imagePath": "assets/images/lednameplate/vintage-frame.jpg",
+      "name": "VINTAGE FRAME",
+      "price": 3000
+    },
+    {
+      "id": 6,
+      "imagePath": "assets/images/lednameplate/wooden-nature.jpg",
+      "name": "WOODEN NATURE",
+      "price": 3000
+    }
+  ]
+}

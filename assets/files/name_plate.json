@@ -2,39 +2,39 @@
   "Products": [
     {
       "id": 1,
-      "imagePath": "assets/images/name_plate.png",
-      "name": "Name Plate",
-      "price": 0
+      "imagePath": "assets/images/nameplate/caligraphic-name.jpg",
+      "name": "CALIGRAPHIC NAME",
+      "price": 2200
     },
     {
       "id": 2,
-      "imagePath": "assets/images/name_plate.png",
-      "name": "Name Plate",
-      "price": 0
+      "imagePath": "assets/images/nameplate/detailing-beauty.jpg",
+      "name": "DETAILING BEAUTY",
+      "price": 2200
     },
     {
       "id": 3,
-      "imagePath": "assets/images/name_plate.png",
-      "name": "Name Plate",
-      "price": 0
+      "imagePath": "assets/images/nameplate/fancy-acrylic.jpg",
+      "name": "FANCY ACRYLIC",
+      "price": 2200
     },
     {
       "id": 4,
-      "imagePath": "assets/images/name_plate.png",
-      "name": "Name Plate",
-      "price": 0
+      "imagePath": "assets/images/nameplate/plate-with-corner.jpg",
+      "name": "PLATE WITH CORNER",
+      "price": 2200
     },
     {
       "id": 5,
-      "imagePath": "assets/images/name_plate.png",
-      "name": "Name Plate",
-      "price": 0
+      "imagePath": "assets/images/nameplate/ultra-modern.jpg",
+      "name": "ULTRA MODERN",
+      "price": 2200
     },
     {
       "id": 6,
-      "imagePath": "assets/images/name_plate.png",
-      "name": "Name Plate",
-      "price": 0
+      "imagePath": "assets/images/nameplate/vertical-name.jpg",
+      "name": "VERTICAL NAME",
+      "price": 2200
     }
   ]
 }
