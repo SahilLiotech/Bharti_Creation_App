@@ -1,7 +1,6 @@
 import 'package:bharti_creation_app/model/product_model.dart';
 import 'package:bharti_creation_app/utils/product_data.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,87 +40,110 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: screenSize.width,
-              child: Image.asset(
-                "assets/images/home_screen_pic.png",
-                fit: BoxFit.contain,
-              ),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          SizedBox(
+            width: screenSize.width,
+            child: Image.asset(
+              "assets/images/home_screen_pic.png",
+              fit: BoxFit.contain,
             ),
-            const SizedBox(height: 20),
-            _buildProductSection('Name Plate', _namePlateProducts),
-            const SizedBox(height: 20),
-            _buildProductSection('DND Panel', _dndPanelProducts),
-            const SizedBox(height: 20),
-            _buildProductSection('LED Name Plate', _ledNamePlateProducts),
-            const SizedBox(height: 20),
-            _buildProductSection('Society Dashboard', _socityNameBoardProducts),
-          ],
-        ),
+          ),
+          // TODO: Remove unnecessary repetation.
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            'NamePlates',
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          ProductRow(
+            products: _namePlateProducts,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            'DND Panels',
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          ProductRow(
+            products: _dndPanelProducts,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            'LED Nameplates',
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          ProductRow(
+            products: _ledNamePlateProducts,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            'Society Name Boards',
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          ProductRow(
+            products: _socityNameBoardProducts,
+          ),
+        ],
       ),
     );
   }
+}
 
-  Widget _buildProductSection(String title, List<Product> products) {
-    final screenSize = MediaQuery.of(context).size;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.01),
-          child: Text(
-            title,
-            style: GoogleFonts.lato(
-              textStyle: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+class ProductRow extends StatelessWidget {
+  final List<Product> products;
+  const ProductRow({super.key, required this.products});
+  // TODO: add a title: String field that shows title of ProductRow widget
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 200,
+      child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        children: products.map((e) => ProductCard(product: e)).toList(),
+      ),
+    );
+  }
+}
+
+class ProductCard extends StatelessWidget {
+  final Product product;
+  const ProductCard({super.key, required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children: [
+          Image.asset(
+            product.imagePath,
+            height: 150,
+            width: 150,
+            fit: BoxFit.cover,
           ),
-        ),
-        const SizedBox(height: 10),
-        SizedBox(
-          height: 250,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: products.length,
-            itemBuilder: (context, index) {
-              final product = products[index];
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Card(
-                  color: Colors.grey[300],
-                  elevation: 5.0,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 10.0),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          product.imagePath,
-                          height: 150,
-                          width: 150,
-                          fit: BoxFit.cover,
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          product.name,
-                          style: const TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                        Text('₹${product.price}'),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
