@@ -1,7 +1,9 @@
 import 'package:bharti_creation_app/model/product_model.dart';
+import 'package:bharti_creation_app/screens/product_page.dart';
 import 'package:bharti_creation_app/utils/product_data.dart';
+import 'package:bharti_creation_app/utils/product_types.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,87 +43,126 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: screenSize.width,
-              child: Image.asset(
-                "assets/images/home_screen_pic.png",
-                fit: BoxFit.contain,
-              ),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          SizedBox(
+            width: screenSize.width,
+            child: Image.asset(
+              "assets/images/home_screen_pic.png",
+              fit: BoxFit.contain,
             ),
-            const SizedBox(height: 20),
-            _buildProductSection('Name Plate', _namePlateProducts),
-            const SizedBox(height: 20),
-            _buildProductSection('DND Panel', _dndPanelProducts),
-            const SizedBox(height: 20),
-            _buildProductSection('LED Name Plate', _ledNamePlateProducts),
-            const SizedBox(height: 20),
-            _buildProductSection('Society Dashboard', _socityNameBoardProducts),
-          ],
-        ),
+          ),
+          ProductRow(
+            products: _namePlateProducts,
+            title: 'Nameplates',
+            productType: ProductTypes.nameplates,
+          ),
+          ProductRow(
+            products: _dndPanelProducts,
+            title: 'DND Panels',
+            productType: ProductTypes.dndPanels,
+          ),
+          ProductRow(
+            products: _ledNamePlateProducts,
+            title: "LED Nameplates",
+            productType: ProductTypes.ledNameplates,
+          ),
+          ProductRow(
+            products: _socityNameBoardProducts,
+            title: 'Society Name Boards',
+            productType: ProductTypes.societyNameBoards,
+          ),
+        ],
       ),
     );
   }
+}
 
-  Widget _buildProductSection(String title, List<Product> products) {
-    final screenSize = MediaQuery.of(context).size;
+class ProductRow extends StatelessWidget {
+  final List<Product> products;
+  final ProductTypes productType;
+  final String title;
+  const ProductRow({
+    super.key,
+    required this.products,
+    required this.title,
+    required this.productType,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 10),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.01),
-          child: Text(
-            title,
-            style: GoogleFonts.lato(
-              textStyle: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductPage(
+                        productType: productType,
+                      ),
+                    ),
+                  );
+                },
+                icon: const Icon(CupertinoIcons.arrow_right),
+                tooltip: "See all $title",
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 10),
         SizedBox(
-          height: 250,
+          height: 220,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: products.length,
-            itemBuilder: (context, index) {
-              final product = products[index];
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Card(
-                  color: Colors.grey[300],
-                  elevation: 5.0,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 10.0),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          product.imagePath,
-                          height: 150,
-                          width: 150,
-                          fit: BoxFit.cover,
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          product.name,
-                          style: const TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                        Text('₹${product.price}'),
-                      ],
-                    ),
-                  ),
-                ),
-              );
+            itemBuilder: (ctx, idx) {
+              return ProductCard(product: products[idx]);
             },
           ),
         ),
       ],
+    );
+  }
+}
+
+class ProductCard extends StatelessWidget {
+  final Product product;
+  const ProductCard({super.key, required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              product.imagePath,
+              height: 140,
+              width: 140,
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 20),
+            Text(product.name),
+          ],
+        ),
+      ),
     );
   }
 }
