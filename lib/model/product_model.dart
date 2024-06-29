@@ -1,11 +1,11 @@
 class Product {
-  final int? id;
+  final int id;
   final String imagePath;
   final String name;
   final int price;
 
   Product(
-      {this.id,
+      {required this.id,
       required this.imagePath,
       required this.name,
       required this.price});
@@ -26,5 +26,17 @@ class Product {
       'name': name,
       'price': price,
     };
+  }
+
+  @override
+  String toString() {
+    return """
+    Product {
+      price: $price,
+      name: $name,
+      imagePath: $imagePath,
+      id: $id,
+    }
+    """;
   }
 }

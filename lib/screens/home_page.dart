@@ -1,5 +1,8 @@
 import 'package:bharti_creation_app/model/product_model.dart';
+import 'package:bharti_creation_app/screens/product_page.dart';
 import 'package:bharti_creation_app/utils/product_data.dart';
+import 'package:bharti_creation_app/utils/product_types.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,58 +53,25 @@ class _HomePageState extends State<HomePage> {
               fit: BoxFit.contain,
             ),
           ),
-          // TODO: Remove unnecessary repetation.
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            'NamePlates',
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
           ProductRow(
             products: _namePlateProducts,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            'DND Panels',
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-            ),
+            title: 'Nameplates',
+            productType: ProductTypes.nameplates,
           ),
           ProductRow(
             products: _dndPanelProducts,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            'LED Nameplates',
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-            ),
+            title: 'DND Panels',
+            productType: ProductTypes.dndPanels,
           ),
           ProductRow(
             products: _ledNamePlateProducts,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            'Society Name Boards',
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-            ),
+            title: "LED Nameplates",
+            productType: ProductTypes.ledNameplates,
           ),
           ProductRow(
             products: _socityNameBoardProducts,
+            title: 'Society Name Boards',
+            productType: ProductTypes.societyNameBoards,
           ),
         ],
       ),
@@ -111,18 +81,61 @@ class _HomePageState extends State<HomePage> {
 
 class ProductRow extends StatelessWidget {
   final List<Product> products;
-  const ProductRow({super.key, required this.products});
-  // TODO: add a title: String field that shows title of ProductRow widget
+  final ProductTypes productType;
+  final String title;
+  const ProductRow({
+    super.key,
+    required this.products,
+    required this.title,
+    required this.productType,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        children: products.map((e) => ProductCard(product: e)).toList(),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductPage(
+                        productType: productType,
+                      ),
+                    ),
+                  );
+                },
+                icon: const Icon(CupertinoIcons.arrow_right),
+                tooltip: "See all $title",
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 220,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: products.length,
+            itemBuilder: (ctx, idx) {
+              return ProductCard(product: products[idx]);
+            },
+          ),
+        ),
+      ],
     );
   }
 }
@@ -134,15 +147,21 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(
-        children: [
-          Image.asset(
-            product.imagePath,
-            height: 150,
-            width: 150,
-            fit: BoxFit.cover,
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              product.imagePath,
+              height: 140,
+              width: 140,
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 20),
+            Text(product.name),
+          ],
+        ),
       ),
     );
   }
